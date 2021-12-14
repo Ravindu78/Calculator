@@ -1,0 +1,164 @@
+#include "calculator.h"
+#include "ui_calculator.h"
+
+Calculator::Calculator(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Calculator)
+{
+    ui->setupUi(this);
+}
+
+Calculator::~Calculator()
+{
+    delete ui;
+}
+
+int add(int num1,int num2){
+    return num1+num2;
+}
+
+int sub(int num1,int num2){
+    return num1-num2;
+}
+int multi(int num1,int num2){
+    return num1*num2;
+}
+double div(double num1,double num2){
+    return num1/num2;
+}
+
+/*double signChange(double sign){
+    return sign*-1;
+}*/
+
+
+void Calculator::on_one_clicked()
+{
+    ui->label->setText(ui->label->text() + "1");
+}
+
+
+void Calculator::on_two_clicked()
+{
+ui->label->setText(ui->label->text() + "2");
+}
+
+
+void Calculator::on_three_clicked()
+{
+ui->label->setText(ui->label->text() + "3");
+}
+
+
+void Calculator::on_four_clicked()
+{
+ui->label->setText(ui->label->text() + "4");
+}
+
+
+void Calculator::on_five_clicked()
+{
+ui->label->setText(ui->label->text() + "5");
+}
+
+
+void Calculator::on_six_clicked()
+{
+ui->label->setText(ui->label->text() + "6");
+}
+
+
+void Calculator::on_seven_clicked()
+{
+ui->label->setText(ui->label->text() + "7");
+}
+
+
+void Calculator::on_eight_clicked()
+{
+ui->label->setText(ui->label->text() + "8");
+}
+
+
+void Calculator::on_nine_clicked()
+{
+ui->label->setText(ui->label->text() + "9");
+}
+
+
+void Calculator::on_zero_clicked()
+{
+ui->label->setText(ui->label->text() + "0");
+}
+
+
+
+
+void Calculator::on_plus_clicked()
+{
+    num1=ui->label->text().toDouble();
+    o = '+';
+    ui->label->setText("");
+}
+
+
+
+void Calculator::on_minus_clicked()
+{
+    num1=ui->label->text().toDouble();
+    o = '-';
+    ui->label->setText("");
+}
+
+
+void Calculator::on_equal_clicked()
+{
+    num2=ui->label->text().toDouble();
+    switch (o) {
+    case '+' : ans= add(num1,num2);break;
+    case '-' : ans= sub(num1,num2);break;
+    case '*' : ans= multi(num1,num2);break;
+    case '/' : ans= div(num1,num2);break;
+       // case '>' : ans= signChange(sign);break;
+
+    }
+    ui->label->setText(QString::number (ans));
+}
+
+
+void Calculator::on_clear_clicked()
+{
+    ui->label->setText("");
+    num1 = 0;
+    num2 = 0;
+}
+
+
+void Calculator::on_multi_clicked()
+{
+    num1=ui->label->text().toDouble();
+    o = '*';
+    ui->label->setText("");
+}
+
+
+
+
+void Calculator::on_div_clicked()
+{
+    num1=ui->label->text().toDouble();
+    o = '/';
+    ui->label->setText("");
+}
+
+
+
+
+
+void Calculator::on_sign_clicked()
+{
+    sign=ui->label->text().toDouble();
+    sign2= sign*-1;
+ui->label->setText(QString::number(sign2));
+}
+
